@@ -3,7 +3,7 @@ I couldn't find an app that allowed me to save my Obsidian folder into both Driv
 
 # When the app launches there's a README, please READHIM.
 
-## Check [releases](https://github.com/Berdasco99/SyncZettelkasten/releases/tag/v1.0.0) for .dmg download and detailed steps on installation!
+## Check [releases](https://github.com/Berdasco99/SyncZettelkasten/releases) for .dmg download and detailed steps on installation!
 
 
 
