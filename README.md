@@ -36,7 +36,7 @@ Perfect for note-takers who want automatic syncing and version control with mini
    - Launch it once to complete setup.
    - Apple may not let you open my app, you can use this to bypass that:
 ```bash
-xattr -d com.apple.quarantine /Applications/SyncZettelkasten.app
+xattr -d com.apple.quarantine /Applications/BerdSync.app
 ```
 
 2. **Choose Your Folders**
