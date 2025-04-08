@@ -1,30 +1,30 @@
 # BerdSync
 
-**BerdSync** is a lightweight macOS utility that syncs your Obsidian vault (or any folder) between two destinations — like Google Drive and iCloud — while keeping automatic backups of deleted or modified notes.
+**BerdSync** is a lightweight macOS utility that syncs your Obsidian vault (or any folder) between two destinations — such as Google Drive and iCloud — while keeping automatic backups of deleted or modified files.
 
-Perfect for note-takers who want automatic syncing and version control with minimal setup.
+I originally made this app for myself but since I thought it could be useful for other people I decide to create a full fledged app, just make a folder that contains everything you want to backup and enjoy!
 
 ---
 
 ## Features
 
 - **Two-Way Syncing**  
-  Automatically syncs files from one folder into another.
+  Automatically syncs files from one folder to another using `rsync`.
 
 - **Backup of Deleted & Modified Files**  
-  Keeps timestamped backups of every change in a structured folder.
+  Maintains timestamped backups of every change in a structured archive.
 
-- **Customizable Automatic Sync**  
-  Sync runs twice daily (default: 10:00 AM and 10:00 PM) using a LaunchAgent.
+- **Scheduled Automatic Sync**  
+  Runs twice daily by default (10:00 AM and 10:00 PM) via a macOS LaunchAgent. Sync times are fully customizable from the app menu.
 
-- **Retention Control**  
-  Automatically deletes backups older than your defined period — or keeps everything forever.
+- **Backup Retention Control**  
+  Automatically removes backups older than your selected limit — or retains them all forever.
 
 - **Manual Sync Option**  
-  Trigger sync anytime from the app or SwiftBar menu.
+  Run the sync at any time from the app or from the menu bar using the SwiftBar plugin.
 
-- **SwiftBar Plugin Support (Optional)**  
-  View sync status, last run time, and run sync manually from your macOS menu bar.
+- **SwiftBar Integration (Optional)**  
+  Adds a menu bar widget showing sync status and last run time, and allows on-demand syncing.
 
 ---
 
@@ -33,66 +33,75 @@ Perfect for note-takers who want automatic syncing and version control with mini
 1. **Install the App**
    - Download the `.dmg` file.
    - Drag `BerdSync.app` to your **Applications** folder.
-   - Launch it once to complete setup.
-   - Apple may not let you open my app, you can use this to bypass that:
-   
-```bash
-xattr -d com.apple.quarantine /Applications/BerdSync.app
-```
+   - Launch the app once to complete setup.
+   - If macOS blocks it, you can bypass Gatekeeper by running:
+
+     ```bash
+     xattr -d com.apple.quarantine /Applications/BerdSync.app
+     ```
 
 2. **Choose Your Folders**
-   - Main Folder: your Obsidian vault (e.g., Google Drive)
-   - Backup Folder: where sync results and backups go (e.g., iCloud)
+   - Main Folder: typically your Obsidian vault (e.g., Google Drive).
+   - Backup Folder: destination for synced data and versioned backups (e.g., iCloud).
 
-3. **Set a Retention Period**
-   - Choose how many days of backups to keep.
-   - Set to `0` to keep everything forever.
+3. **Set Backup Retention**
+   - Define how many days of backups to keep.
+   - Set to `0` to retain all backups indefinitely.
 
-4. **Enable Auto-Sync**
-   - BerdSync sets up a LaunchAgent that runs the sync script twice per day.
-   - Times are customizable from the app menu.
+4. **Enable Automatic Sync**
+   - BerdSync installs a LaunchAgent to handle background syncing on a schedule.
+   - Edit sync times directly from the app menu.
 
-5. **(Optional) Install SwiftBar Plugin**
-   - Choose "Install SwiftBar Plugin" from the app menu.
-   - Requires [SwiftBar](https://swiftbar.app) to be installed.
+5. **(Optional) Install the SwiftBar Plugin**
+   - From the app menu, choose "Install SwiftBar Plugin."
+   - Requires [SwiftBar](https://swiftbar.app) to be installed separately.
+
+---
+
+## Technologies Used
+
+- [**Platypus**](https://github.com/sveinbjornt/Platypus) — used to package the bash-based app into a native `.app` bundle with a custom icon and interactive menu.
+- [**AppleScript**](https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html) — powers the app’s menu system, dialog windows, and interface logic.
+- [**Bash**](https://www.gnu.org/software/bash/) — handles core functionality, preferences, syncing, and scheduling logic.
+- [**rsync**](https://github.com/WayneD/rsync) — efficiently synchronizes files and directories.
+- [**jq**](https://github.com/stedolan/jq) — processes the configuration stored in JSON format.
+- [**LaunchAgents**](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html) — schedule and run sync tasks in the background.
+- [**SwiftBar**](https://github.com/swiftbar/SwiftBar) *(optional)* — enables sync controls and status in the macOS menu bar.
 
 ---
 
 ## Permissions Required
 
-To work correctly with iCloud and external folders, **BerdSync requires Full Disk Access**.
+To function correctly with Google Drive, iCloud, and other user folders, BerdSync requires **Full Disk Access**.
 
-Grant access here:
-- **System Settings > Privacy & Security > Full Disk Access**
-- Add `BerdSync.app` manually if not already present.
+Go to:  
+**System Settings > Privacy & Security > Full Disk Access**  
+Add `BerdSync.app` manually if it isn’t listed.
 
 ---
 
 ## How It Works
 
-- Uses `rsync` to detect and copy changes efficiently.
-- Creates backups before overwriting or deleting anything.
-- LaunchAgent handles automatic scheduled syncs.
-- Configuration is saved at your specified location.
-- Interface is powered by AppleScript + Bash.
+- Syncs files using `rsync`, ensuring speed and file integrity.
+- Detects deletions and overwrites, and archives affected files before proceeding.
+- Saves configuration settings to a JSON file within the user environment.
+- Sets up and manages a macOS LaunchAgent for scheduled syncing.
+- User interface and logic are handled through AppleScript and Bash, bundled into a native `.app` using Platypus.
 
 ---
 
 ## Credits
 
-Made by [@berdasco](https://github.com/Berdasco99)
+Created by [@berdasco](https://github.com/Berdasco99)
 
----
-
-# You can download in [releases](https://github.com/Berdasco99/BerdSync/releases).
+You can download BerdSync from the [GitHub releases page](https://github.com/Berdasco99/BerdSync/releases).
 
 ---
 
 ## License
 
-**MIT License** — free
+**MIT License** — free and open-source.
 
-**jq License**
-
-BerdSync includes the `jq` utility, which is licensed under the MIT License.  
-See the [jq GitHub repository](https://github.com/stedolan/jq) for more information.
+**Included Utilities**  
+BerdSync includes the `jq` command-line utility, licensed under the MIT License.  
+See the [jq GitHub repository](https://github.com/stedolan/jq) for details.
