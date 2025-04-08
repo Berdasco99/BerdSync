@@ -83,6 +83,8 @@ Made by [@berdasco](https://github.com/Berdasco99)
 
 ---
 
+# You can download in [releases](https://github.com/Berdasco99/BerdSync/releases).
+
 ## License
 
 MIT License — free
