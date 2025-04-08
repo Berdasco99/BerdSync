@@ -84,6 +84,10 @@ Made by [@berdasco](https://github.com/Berdasco99)
 
 ---
 
+# You can download in [releases](https://github.com/Berdasco99/BerdSync/releases).
+
+---
+
 ## License
 
 **MIT License** — free
@@ -92,5 +96,3 @@ Made by [@berdasco](https://github.com/Berdasco99)
 
 BerdSync includes the `jq` utility, which is licensed under the MIT License.  
 See the [jq GitHub repository](https://github.com/stedolan/jq) for more information.
-
-You can download in [releases](https://github.com/Berdasco99/BerdSync/releases).
