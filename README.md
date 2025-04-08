@@ -6,6 +6,22 @@ I originally made this app for myself but since I thought it could be useful for
 
 ---
 
+## Important Note About Background Syncing
+
+BerdSync uses macOS **LaunchAgents** to run automatic syncs in the background. These only work **while your Mac is powered on, awake, and logged in**.
+
+If your Mac is **sleeping, shut down, or logged out**, automatic syncing will not occur until the system wakes up.
+
+**What you can do:**
+
+- Schedule sync times for when you’re typically using your Mac (e.g., during work hours).
+- Use utilities like [`caffeinate`](https://ss64.com/osx/caffeinate.html) or [Amphetamine](https://apps.apple.com/app/amphetamine/id937984704) to keep your Mac awake when needed.
+- Run the sync manually from the app or SwiftBar if you’ve missed a scheduled sync.
+
+This is a limitation of how macOS handles background tasks via LaunchAgents, and is not unique to BerdSync.
+
+---
+
 ## Features
 
 - **Two-Way Syncing**  
