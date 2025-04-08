@@ -35,6 +35,7 @@ Perfect for note-takers who want automatic syncing and version control with mini
    - Drag `BerdSync.app` to your **Applications** folder.
    - Launch it once to complete setup.
    - Apple may not let you open my app, you can use this to bypass that:
+   
 ```bash
 xattr -d com.apple.quarantine /Applications/BerdSync.app
 ```
@@ -79,12 +80,17 @@ Grant access here:
 
 ## Credits
 
-Made by [@berdasco](https://github.com/Berdasco99)  
+Made by [@berdasco](https://github.com/Berdasco99)
 
 ---
 
-# You can download in [releases](https://github.com/Berdasco99/BerdSync/releases).
-
 ## License
 
-MIT License — free
+**MIT License** — free
+
+**jq License**
+
+BerdSync includes the `jq` utility, which is licensed under the MIT License.  
+See the [jq GitHub repository](https://github.com/stedolan/jq) for more information.
+
+You can download in [releases](https://github.com/Berdasco99/BerdSync/releases).
